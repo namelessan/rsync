@@ -1,0 +1,16 @@
+1. rsync file to file
+2. rsync folder to folder
+3. rsync file to foler
+4. rsync symlink to symlink
+5. rsync hardlink to hardlink
+
+
+if dest exist:
+  if dest is folder and have write permission
+    if dest is unwriteable or unreadable:
+      # Save dest permission
+      dest_stats = os.stat(dest)
+      dest_permission = stat.S_MODE(dest_stats.st_mode)
+      # Change dest permission
+      os.chmod(dest, 0o777)
+    else:
